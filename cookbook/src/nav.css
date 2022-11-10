@@ -1,0 +1,30 @@
+*{
+    font-size:2vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ul{
+    margin-left: 50vw;
+}
+li{                         
+    text-decoration: none;
+    display: inline-block;
+    margin: 14px 2px;
+    padding: 0.7vw;
+    
+}
+li>a{
+    text-decoration: none;
+    color: white;
+    border-radius: 10px;
+    
+}
+li>a:hover{
+    background-color: white;
+    color: black;
+}
+.navbar{
+    background-color: rgb(209, 60, 6);
+    /* margin-top:-2vw; */
+}
