@@ -2,9 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar.js';
 import Home from "./Components/Home.js";
-import ShoppingList from "./Components/shoopingList.js";
-import MealPlanner from "./Components/mealPlanner.js";
-import CookBook from "./Components/cookBook.js";
+import ShoppingList from "./Components/ShoppingList.js";
+import MealPlanner from "./Components/MealPlanner.js";
+import CookBook from "./Components/CookBook.js";
 import {Route,Routes} from "react-router-dom";
 
 function App() {

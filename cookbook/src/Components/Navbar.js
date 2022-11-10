@@ -1,5 +1,7 @@
 import '../nav.css'; 
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faHome} from '@fortawesome/free-solid-svg-icons'
 import {Link ,useMatch, useResolvedPath} from "react-router-dom";
 
 function Navbar() {
@@ -10,6 +12,7 @@ function Navbar() {
         </nav> */}
         <div className="navbar">
             <ul>
+                <FontAwesomeIcon icon={faHome} style={{color:'white'}}/>
                 <CustomLink to="/home">Home</CustomLink>
                 <CustomLink to="shoppingList">Shopping List</CustomLink>
                 <CustomLink to="mealPlanner">Meal Planner</CustomLink>
