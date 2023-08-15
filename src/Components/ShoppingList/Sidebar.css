@@ -1,0 +1,66 @@
+.Sidebar {
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+  }
+
+.Add
+{
+    background: black;
+    color:white;
+    font-size: 35px;
+    border:none;
+    border-radius: 50%;
+    float: left;
+    margin-left: -90px;
+    position: relative; 
+    top: -20px;
+    left: 200px;
+    width:50px;
+}
+@media screen and (max-width: 768px) {
+  .Add
+  {
+    background: black;
+    color:white;
+    font-size: 35px;
+    border:none;
+    border-radius: 50%;
+    float: left;
+    margin-left: -90px;
+    position: relative; 
+    top: -35px;
+    left: 160px;  
+  }
+  .Sidebar_list_active li{
+    margin-left: 40px!important;
+  }
+}
+  
+.Sidebar_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    height: 0;
+    transition: 300ms;
+    /* position: fixed;  */
+    top: 220px;
+    left: 55px;
+}
+  
+.Sidebar_list_active {
+    height: 300px;
+    /* position: fixed;  */
+    top: 220px;
+    left: 55px;
+  }
+  .Sidebar_list_active li{
+    margin-left: 90px;
+  }
+.Sidebar_list_item {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    list-style: none;
+  }

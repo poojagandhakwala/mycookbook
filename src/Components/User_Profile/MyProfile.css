@@ -1,0 +1,103 @@
+.main-content {
+}
+.main-content .col-lg-7, .profile-mp{
+  margin-left:150px;
+
+}
+.profile-mp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
+  background-color: #fff;
+  background-clip: border-box;
+}
+
+.profile > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.profile-body {
+  padding: 1.5rem;
+  flex: 1 1 auto;
+}
+.popup-mp {
+  font-size: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 330px;
+  margin-top: 100px;
+  width: 40%;
+  height: 60%;
+  background-color: #f8ab77bb;
+  /* background-color: rgba(253, 165, 82, 0.308);rgba(0, 0, 0, 0.5); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: left;
+}
+
+.popup-inner-mp {
+  /* background-color: var(--dark); */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 480px;
+  overflow: auto;
+  max-height: calc(100vh - 4rem);
+}
+
+.popup-mp h2 {
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.profile-header {
+  margin-bottom: 0;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.profile-header:first-child {
+  border-radius: calc(0.375rem - 1px) calc(0.375rem - 1px) 0 0;
+}
+
+.form-control {
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+  height: calc(2.75rem + 2px);
+  padding: 0.625rem 0.75rem;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  color: #8898aa;
+  border: 1px solid #cad1d7;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  background-clip: padding-box;
+  box-shadow: none;
+}
+
+.form-control::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+
+.form-control:focus {
+  color: #8898aa;
+  border-color: rgba(50, 151, 211, 0.25);
+  outline: 0;
+  background-color: #fff;
+  box-shadow: none, none;
+}
+
+.header {
+  background: url("../../Images/homee-transformed\ \(1\).jpg");
+}

@@ -1,0 +1,117 @@
+/* .footer {
+  background-position: bottom;
+  background-color: lavender;
+  width:100%;
+  background-repeat: no-repeat;
+  margin-top: 250px !important;
+  bottom: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+}
+.imageLogo
+{
+  height: 150px;
+}
+.footer-inner {
+  display: flex;
+  padding-top:1%;
+  padding-left: 9%;
+}
+.f-info {
+  margin-top: -10vw;
+  margin-left: 270px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+}
+.f-info h5 {
+  font-style: normal;
+}
+.f-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-left: 130px;
+  flex-direction: column;
+}
+
+.f-link li > a {
+  text-decoration: none;
+  color: black;
+}
+
+.f-link li{
+  margin-top: 6%;
+}
+
+.f-link li>a:hover {
+  color: #000000;
+}
+.footer-copyright{
+  margin-top: 3vw;
+
+}
+.footer-copyright p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right:-138%;
+}
+@media screen and (max-width: 768px) {
+  .footer{
+    background-position: bottom;
+    margin-top: 250px !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    right: 0px !important;
+  }
+  .imageLogo{
+    height:100px;
+  }
+  .footer-inner {
+    display: block;
+    padding-left: 10px;
+  }
+  .f-info {
+    margin-top: 2vw;
+    margin-left: 15px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+  }
+  .f-info h6 {
+    font-size: 15px;
+    font-style: normal;
+  }
+  .f-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+    flex-direction: column;
+  }
+  .f-link li{
+    margin-top: 3%;
+  }
+  .footer-copyright{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .footer-copyright p {
+    justify-content: center;
+    margin-left: 0px;
+  }
+} */
+footer{
+  min-width: 306px;
+  height:250px;
+  font-size: 20px;
+  margin-top: 300px;
+  background-color:#eef2f5 ;
+}
+.fa{
+  color:black;
+  font-size:30px;
+}

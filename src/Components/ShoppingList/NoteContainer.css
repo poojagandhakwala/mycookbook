@@ -1,0 +1,22 @@
+.note-container {
+    height: 50%; 
+    margin-left: 100px;
+  }
+  
+.note-container h2 {
+    margin-bottom: 20px;
+  }
+  
+.note-container_notes {
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap:20px;
+  }
+  @media screen and (max-width:768px){
+    .note-container{
+      margin-left:-5px;
+    }
+    
+  }

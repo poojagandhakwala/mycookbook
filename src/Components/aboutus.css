@@ -1,0 +1,104 @@
+.bodyaboutus {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 120px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.iconsaboutus,.iconsaboutus a{
+  text-align: center;
+  color:black!important;
+}
+
+.columnaboutus {
+  float: left;
+  width: 40%!important;
+  padding: 0 8px;
+}
+
+.cardaboutus {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  border-radius: 5%;
+}
+.btn-floating a{
+  text-decoration: none;
+  color:black!important;
+}
+.aboutus-section {
+  padding: 270px;
+}
+.contentaboutus {
+  text-align: left;
+  color: #515f80;
+  font-size: 20px;
+  margin-left: -80px;
+}
+
+.imgaboutus {
+  background: url("../Images/about-data-bowl.jpg");
+  margin-top: -350px;
+  margin-right: -200px;
+  float: right;
+  height: 600px;
+  width: 600px;
+  background-repeat: no-repeat;
+}
+
+.containeraboutus {
+  padding: 0 16px;
+  text-align: center;
+}
+
+.containeraboutus::after,
+.rowaboutus::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.titleaboutus {
+  color: grey;
+}
+
+.buttonaboutus {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonaboutus:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 992px) {
+  .imgaboutus{
+    height:500px;
+    width:500px;
+  }
+  .columnaboutus {
+    width: 35%;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .columnaboutus {
+    width: 30%;
+    display: block;
+  }
+}

@@ -1,0 +1,39 @@
+.book-templates
+{
+    /* margin:50px; */
+    margin: 0vw 5vw;
+    margin-top:2000px;
+    padding: 0vw 2vw;
+    padding-top:5px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+ .recipebook-card{
+    width:8rem;
+    height:10rem;
+    margin-left:20px;
+    margin-bottom: 30px;
+}
+
+.recipebook-cardd{
+    padding: 5px 25px;
+    /* margin-top: 10px; */
+    height:10rem;
+    display:'flex';
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.recipebook-card:hover{
+    cursor: pointer;
+}
+.card-titles{
+    margin: 15px;
+    justify-content: center;
+}
+
+.book-preview
+{
+    margin:30px;
+} 
+ 

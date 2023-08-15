@@ -1,0 +1,14 @@
+#dropdown-basic {
+  background-color: white;
+  color: black;
+  /* border-color: black; */
+  /* border-radius: 10px; */
+  border: 1px solid #c7d1c8;
+  border-radius: 15px;
+  padding: 8px;
+}
+
+#dropdown-basic:hover {
+  color: #ec6307;
+  /* border: #ec6307 solid 2px; */
+}
