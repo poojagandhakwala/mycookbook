@@ -14,7 +14,6 @@ import Myprofile from "./Components/User_Profile/MyProfile";
 import Dashboard from "./Components/Dashboard/Dashboard.js";
 import Users from "./Components/Dashboard/Data_tables/Users";
 import Recipes from "./Components/Dashboard/Data_tables/Recipes";
-import Aboutus from "./Components/aboutus";
 import Change from "./Components/User_Profile/change";
 import Planner from "./Components/MealPlanner/Planner";
 import { ToastContainer } from "react-toastify";
