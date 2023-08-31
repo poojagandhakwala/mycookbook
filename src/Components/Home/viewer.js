@@ -67,7 +67,7 @@ function RecipeViewer() {
       );
       const docSnap = await getDocs(q);
       docSnap.forEach((doc1) => {
-        console.log("ID=" + doc1.id, " => ", doc1.data());
+        // console.log("ID=" + doc1.id, " => ", doc1.data());
         if (userid !== doc1.id) {
           setUserid(doc1.id);
         }
@@ -103,8 +103,8 @@ function RecipeViewer() {
           format('DD/MM/YYYY'), day:dayjs.unix(time_created.seconds).
           format('dddd')});
 
-      console.log("Document Title:", name);
-      console.log("Document data:", docSnap.data());
+      // console.log("Document Title:", name);
+      // console.log("Document data:", docSnap.data());
     } else {
       console.log("No such document!");
     }
@@ -130,9 +130,9 @@ function RecipeViewer() {
         date: dayjs.unix(time_created.seconds).format("DD/MM/YYYY"),
         day: dayjs.unix(time_created.seconds).format("dddd"),
       });
-      console.log(url);
-      console.log("Document Title:", name);
-      console.log("Document data:", docSnap.data());
+      // console.log(url);
+      // console.log("Document Title:", name);
+      // console.log("Document data:", docSnap.data());
     } else {
       console.log("No such document!");
     }

@@ -20,13 +20,8 @@ import {
   limit,
   serverTimestamp,
 } from "firebase/firestore";
-import { getDatabase, push, set } from "firebase/database";
-import { ref as refernce } from "firebase/database";
 import { auth, db } from "../Context/firebase";
 import "./home.css";
-// import { Container, Row, Col } from "react-bootstrap";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd, faTrash } from "@fortawesome/free-solid-svg-icons";
 import RecipeViewer from "./viewer";
@@ -35,9 +30,9 @@ import { storage } from "../Context/firebase";
 import "firebase/storage";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import fooddish from "../../Images/home(2).png"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import fooddish from "../../Images/home(2).png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -45,7 +40,7 @@ export default function Home() {
   const recipeCollectionRef = query(collection(db, "Recipes"), orderBy("name"));
   const [userecipes, setUserecipes] = useState([]);
   let us = "";
-  const [show, setShow] = useState(false);  
+  const [show, setShow] = useState(false);
   const [data, setData] = useState({
     name: "",
     category: "",
@@ -62,7 +57,7 @@ export default function Home() {
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
   const loc = useLocation();
-  const [alertt,setAlertt]=useState();
+  const [alertt, setAlertt] = useState();
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
 
@@ -92,14 +87,14 @@ export default function Home() {
       );
       const docSnap = await getDocs(q);
       docSnap.forEach((doc1) => {
-        console.log("ID=" + doc1.id, " => ", doc1.data());
+        // console.log("ID=" + doc1.id, " => ", doc1.data());
         if (userid !== doc1.id) {
           setUserid(doc1.id);
         }
         if (us === "") {
           us = doc1.id;
         }
-        setPathh(`LoginData/${doc1.id}`); 
+        setPathh(`LoginData/${doc1.id}`);
       });
       const uscoll = collection(db, `LoginData/${us}/Recipes_user`);
       onSnapshot(uscoll, (snapshot) => {
@@ -123,12 +118,7 @@ export default function Home() {
     if (!user) return navigate("/");
     fetchUserId();
   }, [user, loading]);
-  // const showAlert=(msg)=>{
-  //   setAlertt(msg)
-  //   setTimeout(()=>{
-  //     setAlertt(null);
-  //   },1500);
-  // }
+
   useEffect(() => {
     const handleUpload = () => {
       const name = new Date().getTime() + image.name;
@@ -189,31 +179,31 @@ export default function Home() {
     setIsSubmit(true);
     const q = query(
       collection(db, `LoginData/${userid}/Recipes_user`),
-      where("userid", "==", parseInt(userid,10))
+      where("userid", "==", parseInt(userid, 10))
     );
     const docs = await getDocs(q);
     let myId = "";
     let useridd = 0;
-    if (docs.docs.length === 0) 
-    {
+    if (docs.docs.length === 0) {
       myId = userid + "201";
-      var id_no=parseInt(myId,10);
-      if (window.confirm("Want to add first document " + id_no + "?")) 
-      {
+      var id_no = parseInt(myId, 10);
+      if (window.confirm("Want to add first document " + id_no + "?")) {
         const DocRef = doc(
           collection(db, `LoginData/${userid}/Recipes_user`),
           `${id_no}`
         );
-        useridd = parseInt(userid,10);
+        useridd = parseInt(userid, 10);
         setDoc(DocRef, {
           ...data,
           url,
           userid: useridd,
           timestamp: serverTimestamp(),
-        });  
-        // {showAlert("Submitted")}  
+        });
+        // {showAlert("Submitted")}
         // setIsSubmit(true);
-        {notify()}
+        {
+          notify();
+        }
         // {alert("Recipe added!")}
         navigate("/");
         setProgress(0);
@@ -226,8 +216,7 @@ export default function Home() {
           steps: [""],
         });
       }
-    } 
-    else {
+    } else {
       const lastdocRef = query(
         collection(db, `LoginData/${userid}/Recipes_user`),
         orderBy("timestamp", "desc"),
@@ -240,34 +229,34 @@ export default function Home() {
       myId = parseInt(myId, 10);
       myId += 1;
       myId = myId.toString();
-      var id_no=parseInt(myId,10);
-        const newDocRef = doc(
-          collection(db, `LoginData/${userid}/Recipes_user`),
-          `${id_no}`
-        );
-        useridd = parseInt(userid,10);
-        setDoc(newDocRef, {
-          ...data,
-          url,
-          userid: useridd,
-          timestamp: serverTimestamp(),
-        });
-        // setIsSubmit(true);
-        notify()
-        // {alert("Recipe added!");}
-        setProgress(0);
-        navigate("/");
-        setData({
-          name: "",
-          category: "",
-          prepTime: "",
-          cookTime: "",
-          ingredients: [""],
-          steps: [""],
-        });
+      var id_no = parseInt(myId, 10);
+      const newDocRef = doc(
+        collection(db, `LoginData/${userid}/Recipes_user`),
+        `${id_no}`
+      );
+      useridd = parseInt(userid, 10);
+      setDoc(newDocRef, {
+        ...data,
+        url,
+        userid: useridd,
+        timestamp: serverTimestamp(),
+      });
+      // setIsSubmit(true);
+      notify();
+      // {alert("Recipe added!");}
+      setProgress(0);
+      navigate("/");
+      setData({
+        name: "",
+        category: "",
+        prepTime: "",
+        cookTime: "",
+        ingredients: [""],
+        steps: [""],
+      });
     }
     setPopupActive(false);
-    // {showAlert("Submiited")}  
+    // {showAlert("Submiited")}
   };
   const [focused, setFocused] = useState(false);
   const handleFocus = (e) => {
@@ -329,128 +318,167 @@ export default function Home() {
   return (
     <>
       <div className="text-center main">
-        <div className="container d-flex align-items-center 
-        text-center h-100 w-100 mt-1">
-            <div className="quotes mx-5 px-5">
-              <h2
-              style={{color:'black'}}
-              ></h2>
-            </div>
-        </div>
-        </div>
-        <div className="container search mt-5">
-            <input className="searchInput form-control" type="text" name=""
-            style={{float:'center'}}
-            value={search} placeholder=" Search..." 
-            onChange={(e)=>setSearch(e.target.value)}
-            />
-          <button className="btn searchIcon">
-            <FontAwesomeIcon icon={faSearch} style={{color:'black'}}> </FontAwesomeIcon>
-          </button>
-        </div>
-        <button className="add"
-          onClick={() => {
-            setPopupActive(!popupActive);
-            {
-              !user ? alert("Please login!") : <></>;
-            }
-          }}
+        <div
+          className="container d-flex align-items-center 
+        text-center h-100 w-100 mt-1"
         >
-          <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>
+          <div className="quotes mx-5 px-5">
+            <h2 style={{ color: "black" }}></h2>
+          </div>
+        </div>
+      </div>
+      <div className="container search mt-5">
+        <input
+          className="searchInput form-control"
+          type="text"
+          name=""
+          style={{ float: "center" }}
+          value={search}
+          placeholder=" Search..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button className="btn searchIcon">
+          <FontAwesomeIcon icon={faSearch} style={{ color: "black" }}>
+            {" "}
+          </FontAwesomeIcon>
         </button>
+      </div>
+      <button
+        className="add"
+        onClick={() => {
+          setPopupActive(!popupActive);
+          {
+            !user ? alert("Please login!") : <></>;
+          }
+        }}
+      >
+        <FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>
+      </button>
 
-        <div className="container ">
-          <div className="row justify-content-center mt-5" 
-          >
-          {recipes.filter(
-            (item) => {
-              if(search === " ")
-              { return item; }
-              else if(
-                item.name.toLowerCase().
-                includes(search)
-              )
-            {return item;}})                       
-            .map((recipe, i) => (    
-            <div className="col-md-4">
-              <div className="card mx-2 mb-3" key={recipe.id}
-                style={{ width: "18rem" }}>
-                <img className="card-img-top"
-                  style={{ width: "286px", height: "240px",marginLeft:'0px' }}
-                  src={recipe.imgurl}/>
-                <div className='card-body'>
-                  <h5 className="card-title">
-                    {recipe.name}
-                  </h5>
-                  <div className="card-subtitle">
-                    {recipe.category}
+      <div className="container ">
+        <div className="row justify-content-center mt-5">
+          {recipes
+            .filter((item) => {
+              if (search === " ") {
+                return item;
+              } else if (item.name.toLowerCase().includes(search)) {
+                return item;
+              }
+            })
+            .map((recipe, i) => (
+              <div className="col-md-4">
+                <div
+                  className="card mx-2 mb-3"
+                  key={recipe.id}
+                  style={{ width: "18rem" }}
+                >
+                  <img
+                    className="card-img-top"
+                    style={{
+                      width: "286px",
+                      height: "240px",
+                      marginLeft: "0px",
+                    }}
+                    src={recipe.imgurl}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{recipe.name}</h5>
+                    <div className="card-subtitle">{recipe.category}</div>
+                    <CustomLink
+                      to="/RecipeViewer"
+                      state={{ img: i, id: recipe.id, p: "", userid: us }}
+                    >
+                      <button
+                        className="btn"
+                        style={{
+                          backgroundColor: "#e96100",
+                          color: "white",
+                          float: "right",
+                          width: "100%",
+                          marginTop: "15px",
+                          listStyle: "none",
+                        }}
+                        // onClick={() => { RecipeViewer(); }}
+                      >
+                        See Recipe
+                      </button>
+                    </CustomLink>
                   </div>
-                  <CustomLink to="/RecipeViewer" 
-                  state={{ img: i, id: recipe.id, p: "", userid: us }} >
-                    <button className="btn" style={{backgroundColor:'#e96100',
-                    color:'white',float:'right',width:'100%',marginTop:'15px'}} 
-                    onClick={() => { RecipeViewer(); }} >
-                      See Recipe
-                    </button>
-                  </CustomLink>
                 </div>
               </div>
-            </div>        
-            )
-            
-            )}
-            
-        
-            {userecipes.filter(
-            (item) => {
-              if(search === " ")
-              { return item; }
-              else if(
-                item.name.toLowerCase().
-                includes(search)
-              )
-            {return item;}})                       
-            .map((userecipe, i) => (    
-            <div className="col-md-4">
-              <div className="card mx-1 mb-3" key={userecipe.id}
-                style={{ width: "18rem" }}>
-                <img className="card-img-top"
-                  style={{ width: "286px", height: "240px",marginLeft:'-12px' }}
-                  src={userecipe.url}/>
-                <div className='card-body'>
-                  <h5 className="card-title">
-                    {userecipe.name}
-                  </h5>
-                  <div className="card-subtitle">
-                    {userecipe.category}
-                  </div>
-                  <CustomLink to="/RecipeViewer" 
-                  state={{ img: i, id: userecipe.id, p: pathh}} >
-                    <button className="btn" style={{backgroundColor:'#e96100',
-                    color:'white',float:'right',width:'100%',marginTop:'15px'}} 
-                    onClick={() => { RecipeViewer(); }} >
-                      See Recipe
-                    </button>
-                  </CustomLink>
-                </div>
-              </div>
-            </div>        
             ))}
-            {(recipes.length + userecipes.length) % 3 !== 0 && (
-        <div className={`col-sm-${12 - ((recipes.length + userecipes.length) % 3) * 4}`}></div>
-        )}
+
+          {userecipes
+            .filter((item) => {
+              if (search === " ") {
+                return item;
+              } else if (item.name.toLowerCase().includes(search)) {
+                return item;
+              }
+            })
+            .map((userecipe, i) => (
+              <div className="col-md-4">
+                <div
+                  className="card mx-1 mb-3"
+                  key={userecipe.id}
+                  style={{ width: "18rem" }}
+                >
+                  <img
+                    className="card-img-top"
+                    style={{
+                      width: "286px",
+                      height: "240px",
+                      marginLeft: "-12px",
+                    }}
+                    src={userecipe.url}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{userecipe.name}</h5>
+                    <div className="card-subtitle">{userecipe.category}</div>
+                    <CustomLink
+                      to="/RecipeViewer"
+                      state={{ img: i, id: userecipe.id, p: pathh }}
+                    >
+                      <button
+                        className="btn"
+                        style={{
+                          backgroundColor: "#e96100",
+                          color: "white",
+                          float: "right",
+                          width: "100%",
+                          marginTop: "15px",
+                        }}
+                        // onClick={() => { RecipeViewer(); }}
+                      >
+                        See Recipe
+                      </button>
+                    </CustomLink>
+                  </div>
+                </div>
+              </div>
+            ))}
+          {(recipes.length + userecipes.length) % 3 !== 0 && (
+            <div
+              className={`col-sm-${
+                12 - ((recipes.length + userecipes.length) % 3) * 4
+              }`}
+            ></div>
+          )}
         </div>
-        </div>
-       
-    {user && popupActive && (
+      </div>
+
+      {user && popupActive && (
         <div className="popup">
           <div className="popup-inner">
             <h2> Add a new Recipe </h2>
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" value={data.name}
-                  onBlur={handleFocus} focused={focused.toString()}
+                <input
+                  type="text"
+                  value={data.name}
+                  onBlur={handleFocus}
+                  focused={focused.toString()}
                   onChange={(e) => {
                     setData({ ...data, name: e.target.value });
                   }}
@@ -459,9 +487,9 @@ export default function Home() {
                   required="true"
                 />
                 {data.name !== "" && (
-                <span className="error-msg">
-                  Please enter alphabetic characters only
-                </span>
+                  <span className="error-msg">
+                    Please enter alphabetic characters only
+                  </span>
                 )}
               </div>
               <div className="form-group">
@@ -529,8 +557,10 @@ export default function Home() {
                       error={
                         errors.ingredients
                           ? { content: errors.ingredients }
-                          : null }
-                      required key={i}
+                          : null
+                      }
+                      required
+                      key={i}
                       value={ingredient}
                       placeholder={`Ingredient ${i + 1}`}
                       onChange={(e) => {
@@ -540,55 +570,69 @@ export default function Home() {
                     />
                   </>
                 ))}
-                <button type="button" className="button" onClick={handleIngredientCount}>
+                <button
+                  type="button"
+                  className="button"
+                  onClick={handleIngredientCount}
+                >
                   Add Ingredient
                 </button>
                 {index ? (
-                  <button type="button"
+                  <button
+                    type="button"
                     className="button remove"
-                    onClick={() => removeFields(index)} >
+                    onClick={() => removeFields(index)}
+                  >
                     <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
                   </button>
                 ) : (
                   <></>
                 )}
-              </div> 
+              </div>
               <div className="form-group">
                 <label>Steps</label>
                 {data.steps.map((step, i) => (
                   <textarea
                     type="text"
                     error={errors.steps ? { content: errors.steps } : null}
-                    required key={i} value={step}
+                    required
+                    key={i}
+                    value={step}
                     placeholder={`Step ${i + 1}`}
-                    onChange={(e) => handleStep(e, i)} />
-                  ))
-                }
+                    onChange={(e) => handleStep(e, i)}
+                  />
+                ))}
                 <button type="button" onClick={handleStepCount}>
                   Add Step
                 </button>
               </div>
               <div className="image" style={{ display: "flex" }}>
-                <input type="file" accept="image/*" 
+                <input
+                  type="file"
+                  accept="image/*"
                   onChange={(e) => setImage(e.target.files[0])}
                 />
                 <progress value={progress} max="100" />
               </div>
               <div className="buttons">
-                <button type="submit" disabled={progress !== null && progress < 100}
+                <button
+                  type="submit"
+                  disabled={progress !== null && progress < 100}
                 >
                   Submit
                 </button>
-                <button type="button"
+                <button
+                  type="button"
                   onClick={() => setPopupActive(!popupActive)}
-                  className="remove" >
+                  className="remove"
+                >
                   Close
                 </button>
               </div>
             </form>
           </div>
         </div>
-      )} 
+      )}
     </>
   );
 }
@@ -597,7 +641,7 @@ function CustomLink({ to, children, ...props }) {
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
   return (
-    <li className={isActive ? "active" : ""}>
+    <li className={isActive ? "active" : ""} style={{listStyle:"none"}}>
       <Link to={to} {...props}>
         {children}
       </Link>

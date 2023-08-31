@@ -65,13 +65,11 @@ const Planner = ({
         const q = query(collection(db, "LoginData"), where("uid", "==", user?.uid));
         let docSnap = await getDocs(q); 
         docSnap.forEach((doc1) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log("ID="+ doc1.id, " => ", doc1.data());
+            // console.log("ID="+ doc1.id, " => ", doc1.data());
             if(userid !== doc1.id || userid === "")
             {
               setUserid(doc1.id);
               setPathh(`LoginData/${doc1.id}`);
-            //   console.log("userid   = "+userid); 
             }
         });
       } catch (err) {
